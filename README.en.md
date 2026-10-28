@@ -151,8 +151,6 @@ documentation.
 
 A 30-minute guided demo: your equipment, your typical failures and the way you work.
 
-Rafael Blanco, for Kusarive Solutions LLC
-
 - Web: [k-mant.com](https://k-mant.com)
 - Email: soporte@k-mant.com
 - WhatsApp: [+1 407 337 0061](https://wa.me/14073370061)

@@ -152,8 +152,6 @@ documentación.
 Demostración guiada de 30 minutos: sus equipos, sus fallas típicas y su forma de
 trabajar.
 
-Rafael Blanco, para Kusarive Solutions LLC
-
 - Web: [k-mant.com](https://k-mant.com)
 - Correo: soporte@k-mant.com
 - WhatsApp: [+1 407 337 0061](https://wa.me/14073370061)
