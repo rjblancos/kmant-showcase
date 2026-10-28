@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-Mant · Kusarive Solutions LLC</title>
+<meta name="description" content="Gestión de mantenimiento: equipos, fallas, órdenes de trabajo, preventivo, repuestos, compras e indicadores en un solo sistema.">
+<style>
+:root{--bg:#fafaf7;--card:#fff;--txt:#1d1d1b;--suave:#5c5c57;--linea:#e7e5df;--acento:#1f6feb;--acento-txt:#ffffff;--ok:#18794e}
+@media (prefers-color-scheme:dark){:root{--bg:#121211;--card:#1c1c1a;--txt:#efeee9;--suave:#a3a29b;--linea:#2e2d2a;--acento:#58a6ff;--ok:#4cc38a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.envoltura{max-width:1040px;margin:0 auto;padding:0 16px}
+header{padding:28px 0 8px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.marca{font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.marca span{background:var(--acento);color:var(--acento-txt);border-radius:6px;padding:2px 7px;margin-right:6px}
+.idioma button{background:none;border:1px solid var(--linea);color:var(--txt);border-radius:999px;padding:4px 12px;cursor:pointer;font:inherit;font-size:.85rem}
+.idioma button[aria-pressed=true]{background:var(--txt);color:var(--bg)}
+.portada{padding:48px 0 24px}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+.lema{font-size:1.15rem;color:var(--suave);max-width:680px;margin:0}
+.estado{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:.9rem;color:var(--suave)}
+.estado i{width:9px;height:9px;border-radius:50%;background:var(--ok);display:inline-block}
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:32px 0 8px}
+.cifra{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:18px 20px}
+.cifra b{display:block;font-size:2rem;letter-spacing:-.02em}
+.cifra small{color:var(--suave)}
+.nota{font-size:.82rem;color:var(--suave);margin:4px 0 0}
+h2{font-size:1.5rem;margin:56px 0 16px;letter-spacing:-.01em}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.bloque{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:18px 20px}
+.bloque h3{margin:0 0 6px;font-size:1.02rem}
+.bloque p{margin:0;color:var(--suave);font-size:.95rem}
+.capturas{display:grid;grid-template-columns:2fr 1fr;gap:14px;align-items:start}
+.par{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}.par figure{margin:0}.par img{width:100%;height:auto;border-radius:12px;border:1px solid var(--linea);display:block}.par figcaption{font-size:.85rem;color:var(--suave);margin-top:6px}
+.idioma{display:flex;gap:6px;flex-shrink:0}@media (max-width:720px){.par{grid-template-columns:1fr}}
+.capturas figure{margin:0}
+.capturas img{width:100%;height:auto;border-radius:12px;border:1px solid var(--linea);display:block}
+.capturas figcaption{font-size:.85rem;color:var(--suave);margin-top:6px}
+.pila{display:grid;gap:14px}
+.flujo{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.95rem}
+.flujo span{background:var(--card);border:1px solid var(--linea);border-radius:10px;padding:8px 12px}
+.flujo em{color:var(--suave);font-style:normal}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+td{padding:12px 16px;border-top:1px solid var(--linea);vertical-align:top;font-size:.95rem}
+tr:first-child td{border-top:0}
+td:first-child{font-weight:700;white-space:nowrap;width:1%}
+.contacto{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:22px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+.contacto a{color:var(--txt);font-weight:600}
+.boton{background:var(--acento);color:var(--acento-txt)!important;text-decoration:none;border-radius:10px;padding:10px 16px}
+footer{padding:40px 0;color:var(--suave);font-size:.85rem}
+[data-en]{display:none}
+html[lang=en] [data-es]{display:none}
+html[lang=en] [data-en]{display:revert}
+.cifra b[data-en]{display:none}html[lang=en] .cifra b[data-es]{display:none}html[lang=en] .cifra b[data-en]{display:block}
+@media (max-width:720px){.capturas{grid-template-columns:1fr}td:first-child{white-space:normal}}
+.ancha{margin:24px 0 8px}.ancha img{width:100%;height:auto;border-radius:14px;border:1px solid var(--linea);display:block}
+.cta{background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:28px;margin-top:8px}
+.cta h3{margin:0 0 6px;font-size:1.3rem}.cta p{margin:0 0 16px;color:var(--suave)}
+.movil{display:flex;gap:14px}.movil figure{flex:1}
+.portadas-movil{display:none}
+@media (max-width:700px){.ancha{display:none}.portadas-movil{display:grid;gap:14px;margin:20px 0 8px}
+.portadas-movil img{width:100%;height:auto;border-radius:12px;border:1px solid var(--linea);display:block}
+.portadas-movil figcaption{font-weight:700;margin-top:6px}}
+.descarga{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:var(--acento);color:var(--acento-txt);text-decoration:none;border-radius:12px;padding:12px 18px;font-weight:700}
+.descarga small{font-weight:400;opacity:.85}
+.estado i{background:var(--acento)}
+.solo-movil{display:none!important}
+@media (max-width:700px){.solo-ancha{display:none!important}html[lang=es] .solo-movil[data-es],html[lang=en] .solo-movil[data-en]{display:block!important}.descarga{display:flex;flex-direction:column;align-items:flex-start;gap:2px}}
+@media (max-width:440px){.marca .sub{display:none!important}}
+</style>
+</head>
+<body>
+<div class="envoltura">
+<header>
+  <div class="marca"><span>K-Mant</span><span class="sub" style="background:none;color:inherit;padding:0;margin:0" data-es>Gestión de mantenimiento</span><span class="sub" style="background:none;color:inherit;padding:0;margin:0" data-en>Maintenance management</span></div>
+  <div class="idioma" role="group" aria-label="Idioma / Language">
+    <button type="button" data-l="es" aria-pressed="true">ES</button>
+    <button type="button" data-l="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<section class="portada">
+  <h1 data-es>El mantenimiento de su empresa, ordenado de punta a punta.</h1><h1 data-en>Your company's maintenance, organized end to end.</h1>
+  <p class="lema" data-es>Equipos, fallas, órdenes de trabajo, preventivo, repuestos, compras e indicadores en un solo sistema: en la oficina, en planta y en el teléfono del técnico. Para quien mantiene sus propios equipos y para quien da mantenimiento a otros.</p><p class="lema" data-en>Equipment, failures, work orders, preventive maintenance, spare parts, purchasing and KPIs in one system: in the office, on the plant floor and on the technician's phone. For companies that maintain their own equipment and for those that maintain others'.</p>
+  <div class="estado"><i></i><span data-es>Disponible para demostración guiada · Sistema propietario de Kusarive Solutions LLC</span><span data-en>Available for guided demos · Proprietary system by Kusarive Solutions LLC</span></div>
+  <div><a class="descarga" href="presentacion/K-Mant-presentacion.pdf" download><span data-es>Descargar la presentación</span><span data-en>Download the presentation</span> <small><span data-es>PDF · 36 diapositivas</span><span data-en>PDF · 36 slides · in Spanish</span></small></a></div>
+  <div class="cifras">
+    <div class="cifra"><b data-es>+500</b><b data-en>500+</b><small data-es>pruebas automáticas</small><small data-en>automated tests</small></div>
+    <div class="cifra"><b>13</b><small data-es>roles de usuario, 4 de ellos para sus clientes</small><small data-en>user roles, 4 of them for your customers</small></div>
+    <div class="cifra"><b>13</b><small data-es>manuales con capturas reales, uno por rol</small><small data-en>manuals with real screenshots, one per role</small></div>
+    <div class="cifra"><b>2</b><small data-es>modos: empresa propia o de servicio</small><small data-en>modes: in-house or service company</small></div>
+  </div>
+  <p class="nota" data-es>531 pruebas automáticas al 27-oct-2026.</p><p class="nota" data-en>531 automated tests as of 27-Oct-2026.</p>
+</section>
+
+<div class="ancha"><img src="capturas/panel.jpg" alt="Panel principal / Main dashboard" width="1440" height="900"></div>
+<div class="portadas-movil"><figure><img src="capturas/movil-jornada.jpg" alt="Jornada del técnico / Technician's day" width="780" height="1688"></figure></div>
+<p class="nota solo-ancha" data-es>El panel de una empresa de servicio: órdenes pendientes y vencidas, cumplimiento del preventivo, disponibilidad y lo que requiere atención. Datos inventados.</p><p class="nota solo-ancha" data-en>The dashboard of a service company: pending and overdue orders, preventive compliance, availability and what needs attention. Made-up data; the interface is in Spanish.</p>
+<p class="nota solo-movil" data-es>La jornada del técnico en su teléfono: su ruta del día, en orden de recorrido. Datos inventados.</p><p class="nota solo-movil" data-en>The technician's day on a phone: the day's route, in visiting order. Made-up data; the interface is in Spanish.</p>
+
+<h2 data-es>Un solo sistema para todo el ciclo</h2><h2 data-en>One system for the whole cycle</h2>
+<div class="flujo">
+  <span data-es>Falla</span><span data-en>Failure</span><em>→</em><span data-es>Solicitud</span><span data-en>Request</span><em>→</em><span data-es>Orden de trabajo</span><span data-en>Work order</span><em>→</em><span data-es>Ejecución en campo</span><span data-en>Field work</span><em>→</em><span data-es>Cierre e informe</span><span data-en>Close-out and report</span><em>→</em><span data-es>Indicadores</span><span data-en>KPIs</span>
+</div>
+<p class="nota" style="margin-top:10px" data-es>Y en paralelo, el preventivo genera sus órdenes solo cuando vence cada plan.</p><p class="nota" style="margin-top:10px" data-en>And in parallel, preventive maintenance creates its own orders when each plan falls due.</p>
+
+<h2 data-es>Qué hace</h2><h2 data-en>What it does</h2>
+<div class="rejilla">
+  <div class="bloque"><h3 data-es>Equipos y activos</h3><h3 data-en>Equipment and assets</h3>
+    <p data-es>Hoja de vida de cada equipo, componentes en árbol, contadores, etiqueta QR o NFC, mapa e importación desde hoja de cálculo.</p><p data-en>A record for each piece of equipment, component tree, meters, QR or NFC tag, map and spreadsheet import.</p></div>
+  <div class="bloque"><h3 data-es>Solicitudes</h3><h3 data-en>Requests</h3>
+    <p data-es>Cualquiera reporta una falla desde el teléfono, incluso sin cuenta, escaneando el QR del equipo.</p><p data-en>Anyone reports a failure from a phone, even without an account, by scanning the equipment's QR code.</p></div>
+  <div class="bloque"><h3 data-es>Órdenes de trabajo</h3><h3 data-en>Work orders</h3>
+    <p data-es>Tablero por estado, cuadrillas, hora límite de respuesta y de solución, y escalado de lo crítico. Nunca dos órdenes abiertas sobre un equipo.</p><p data-en>Board by status, crews, response and resolution deadlines and escalation of critical work. Never two open orders on one piece of equipment.</p></div>
+  <div class="bloque"><h3 data-es>Ejecución y cierre</h3><h3 data-en>Execution and close-out</h3>
+    <p data-es>Horas, repuestos, listas de verificación obligatorias, fotos, vídeo, firma e informe PDF con código de autenticidad.</p><p data-en>Hours, parts, mandatory checklists, photos, video, signature and a PDF report with an authenticity code.</p></div>
+  <div class="bloque"><h3 data-es>El técnico, en su teléfono</h3><h3 data-en>The technician, on a phone</h3>
+    <p data-es>Su jornada y su ruta del día. Sin señal, guarda y envía al volver la cobertura. Se instala como una aplicación.</p><p data-en>Their day and route. With no signal, it saves and sends when coverage returns. Installs like an app.</p></div>
+  <div class="bloque"><h3 data-es>Preventivo</h3><h3 data-en>Preventive</h3>
+    <p data-es>Planes por tiempo o por uso que generan su orden solos al vencer, semáforo, calendario y rutas de inspección.</p><p data-en>Time- or usage-based plans that create their own order when due, traffic light, calendar and inspection routes.</p></div>
+  <div class="bloque"><h3 data-es>Inventario y compras</h3><h3 data-en>Inventory and purchasing</h3>
+    <p data-es>Existencias por almacén, reservas por orden, reposición sugerida, compras con aprobación y códigos de cada proveedor.</p><p data-en>Stock per warehouse, reservations per order, suggested restocking, approved purchases and each supplier's codes.</p></div>
+  <div class="bloque"><h3 data-es>Para empresas de servicio</h3><h3 data-en>For service companies</h3>
+    <p data-es>Clientes con sedes y contratos, cotizaciones que el cliente aprueba y un portal donde sigue su servicio.</p><p data-en>Customers with sites and contracts, quotes the customer approves and a portal to follow their service.</p></div>
+  <div class="bloque"><h3 data-es>Indicadores</h3><h3 data-en>KPIs</h3>
+    <p data-es>Disponibilidad, MTBF, MTTR, cumplimiento del preventivo y del servicio, paradas y costos, en PDF u hoja de cálculo.</p><p data-en>Availability, MTBF, MTTR, preventive and service compliance, downtime and costs, as PDF or spreadsheet.</p></div>
+  <div class="bloque"><h3 data-es>A su medida</h3><h3 data-en>Tailored</h3>
+    <p data-es>Sus palabras, país, moneda, zona horaria, calendario laboral, su marca en los informes y roles propios.</p><p data-en>Your own words, country, currency, time zone, work calendar, your brand on reports and custom roles.</p></div>
+</div>
+
+<h2 data-es>Capturas</h2><h2 data-en>Screenshots</h2>
+<div class="capturas">
+  <div class="pila">
+    <figure><img src="capturas/tablero.jpg" alt="Tablero de órdenes por estado" loading="lazy" width="1440" height="1087"><figcaption data-es>Tablero de órdenes por estado, con su prioridad y su compromiso de servicio.</figcaption><figcaption data-en>Work order board by status, with priority and service commitment.</figcaption></figure>
+    <figure><img src="capturas/orden.jpg" alt="La orden de trabajo" loading="lazy" width="1440" height="1087"><figcaption data-es>La orden de trabajo: equipo, cuadrilla, estado del trabajo y todo lo que pasa en ella.</figcaption><figcaption data-en>The work order: equipment, crew, work status and everything that happens in it.</figcaption></figure>
+    <figure><img src="capturas/arbol.jpg" alt="El árbol de activos" loading="lazy" width="1440" height="1087"><figcaption data-es>El árbol de activos: cada sede con sus equipos y componentes, y lo que pide atención.</figcaption><figcaption data-en>The asset tree: each site with its equipment and components, and what needs attention.</figcaption></figure>
+    <figure><img src="capturas/calendario.jpg" alt="El calendario con las órdenes y los preventivos previstos." loading="lazy" width="1440" height="1087"><figcaption data-es>El calendario con las órdenes y los preventivos previstos.</figcaption><figcaption data-en>The calendar with orders and scheduled preventive work.</figcaption></figure>
+    <figure><img src="capturas/preventivo.jpg" alt="Planes preventivos con su semáforo" loading="lazy" width="1440" height="1087"><figcaption data-es>Planes preventivos con su semáforo: vencidos, por vencer y al día.</figcaption><figcaption data-en>Preventive plans with their traffic light: overdue, due soon and up to date.</figcaption></figure>
+    <figure><img src="capturas/indicadores.jpg" alt="Indicadores" loading="lazy" width="1440" height="1087"><figcaption data-es>Indicadores: órdenes, tiempos, disponibilidad, MTBF y MTTR.</figcaption><figcaption data-en>KPIs: orders, times, availability, MTBF and MTTR.</figcaption></figure>
+    <figure><img src="capturas/inventario.jpg" alt="Inventario por almacén" loading="lazy" width="1440" height="1087"><figcaption data-es>Inventario por almacén, con reservas y lo que está bajo el mínimo.</figcaption><figcaption data-en>Inventory per warehouse, with reservations and what is below minimum.</figcaption></figure>
+    <figure><img src="capturas/cotizaciones.jpg" alt="Cotizaciones con su estado; el cliente las aprueba desde su portal." loading="lazy" width="1440" height="1087"><figcaption data-es>Cotizaciones con su estado; el cliente las aprueba desde su portal.</figcaption><figcaption data-en>Quotes with their status; the customer approves them from their portal.</figcaption></figure>
+    <figure><img src="capturas/portal-cliente.jpg" alt="El portal del cliente" loading="lazy" width="1440" height="900"><figcaption data-es>El portal del cliente: sus equipos, solicitudes, órdenes y cotizaciones por decidir.</figcaption><figcaption data-en>The customer portal: their equipment, requests, orders and quotes to decide.</figcaption></figure>
+  </div>
+  <div class="pila">
+    <figure><img src="capturas/movil-jornada.jpg" alt="La jornada del técnico" loading="lazy" width="780" height="1688"><figcaption data-es>La jornada del técnico, con su ruta del día.</figcaption><figcaption data-en>The technician's day, with the day's route.</figcaption></figure>
+    <figure><img src="capturas/movil-orden.jpg" alt="La orden en el teléfono" loading="lazy" width="780" height="1688"><figcaption data-es>La orden en el teléfono: iniciar, registrar horas y cerrar.</figcaption><figcaption data-en>The order on a phone: start, log hours and close.</figcaption></figure>
+    <figure><img src="capturas/movil-reporte-qr.jpg" alt="Reporte de una falla escaneando el QR" loading="lazy" width="780" height="1688"><figcaption data-es>Reporte de una falla escaneando el QR, sin cuenta.</figcaption><figcaption data-en>Reporting a failure by scanning the QR, no account.</figcaption></figure>
+  </div>
+</div>
+<p class="nota" data-es>Ensayo con empresas, equipos, personas y órdenes inventados.</p><p class="nota" data-en>Test environment with made-up companies, equipment, people and orders.</p>
+
+<h2 data-es>Cada persona, con lo que su trabajo necesita</h2><h2 data-en>Each person, with what their job needs</h2>
+<table>
+  <tr><td data-es>Administrador</td><td data-en>Administrator</td><td><span data-es>Empresa, usuarios, roles, configuración y aprobación de compras.</span><span data-en>Company, users, roles, settings and purchase approval.</span></td></tr>
+  <tr><td data-es>Supervisor / planificador</td><td data-en>Supervisor / planner</td><td><span data-es>Solicitudes, órdenes, cuadrillas, equipos, preventivo, rutas, listas y clientes.</span><span data-en>Requests, orders, crews, equipment, preventive, routes, checklists and customers.</span></td></tr>
+  <tr><td data-es>Técnico</td><td data-en>Technician</td><td><span data-es>Su jornada en el teléfono: ejecuta y cierra sus órdenes.</span><span data-en>Their day on the phone: works and closes their orders.</span></td></tr>
+  <tr><td data-es>Subcontratista</td><td data-en>Subcontractor</td><td><span data-es>Solo las órdenes que le asignan.</span><span data-en>Only the orders assigned to them.</span></td></tr>
+  <tr><td data-es>Solicitante</td><td data-en>Requester</td><td><span data-es>Reporta fallas y sigue sus solicitudes.</span><span data-en>Reports failures and follows their requests.</span></td></tr>
+  <tr><td data-es>Almacenista</td><td data-en>Storekeeper</td><td><span data-es>Inventario, movimientos, almacenes y reposición.</span><span data-en>Inventory, movements, warehouses and restocking.</span></td></tr>
+  <tr><td data-es>Comprador</td><td data-en>Buyer</td><td><span data-es>Compras y proveedores.</span><span data-en>Purchases and suppliers.</span></td></tr>
+  <tr><td data-es>Solo lectura / auditor</td><td data-en>Read-only / auditor</td><td><span data-es>Consulta todo sin cambiar nada.</span><span data-en>Sees everything, changes nothing.</span></td></tr>
+  <tr><td data-es>Usuarios del cliente</td><td data-en>Customer users</td><td><span data-es>Administrador, supervisor, solicitante o solo lectura, solo con lo de su empresa.</span><span data-en>Administrator, supervisor, requester or read-only, limited to their own company.</span></td></tr>
+</table>
+<p class="nota" data-es>Además, cada empresa puede crear roles propios permiso a permiso.</p><p class="nota" data-en>Each company can also create its own roles, permission by permission.</p>
+
+<h2 data-es>Garantías técnicas</h2><h2 data-en>Technical guarantees</h2>
+<table>
+  <tr><td data-es>Aislamiento</td><td data-en>Isolation</td><td><span data-es>Multiempresa: ninguna empresa ni cliente ve los datos de otro.</span><span data-en>Multi-company: no company or customer ever sees another's data.</span></td></tr>
+  <tr><td data-es>Auditoría sellada</td><td data-en>Sealed audit trail</td><td><span data-es>Cada cambio queda encadenado con una huella digital que se puede verificar.</span><span data-en>Every change is chained with a verifiable digital fingerprint.</span></td></tr>
+  <tr><td data-es>Acceso</td><td data-en>Access</td><td><span data-es>Código de 6 dígitos para los administradores al entrar desde un dispositivo nuevo.</span><span data-en>A 6-digit code for administrators signing in from a new device.</span></td></tr>
+  <tr><td data-es>Órdenes</td><td data-en>Orders</td><td><span data-es>Un equipo no admite dos órdenes abiertas; el preventivo espera o se suma, nunca duplica.</span><span data-en>A piece of equipment never has two open orders; preventive waits or merges, never duplicates.</span></td></tr>
+  <tr><td data-es>Evidencias</td><td data-en>Evidence</td><td><span data-es>Fotos, vídeo y documentos con su huella; informe PDF con código de autenticidad.</span><span data-en>Photos, video and documents with their fingerprint; PDF report with an authenticity code.</span></td></tr>
+  <tr><td data-es>Sus datos</td><td data-en>Your data</td><td><span data-es>Respaldo completo de la empresa en un ZIP, cifrado con contraseña si se desea.</span><span data-en>Full company backup as a ZIP, password-encrypted if desired.</span></td></tr>
+  <tr><td data-es>Integración</td><td data-en>Integration</td><td><span data-es>API en JSON o XML, con claves por sistema.</span><span data-en>JSON or XML API, with keys per system.</span></td></tr>
+  <tr><td data-es>Calidad</td><td data-en>Quality</td><td><span data-es>Más de 500 pruebas automáticas cubren permisos, aislamiento, órdenes, preventivo, inventario e informes.</span><span data-en>Over 500 automated tests cover permissions, isolation, orders, preventive, inventory and reports.</span></td></tr>
+</table>
+
+<h2 data-es>Construido con</h2><h2 data-en>Built with</h2>
+<table>
+  <tr><td>PHP</td><td><span data-es>Lógica: órdenes, preventivo, inventario, compras, permisos, informes y API (21.200 líneas), y las pantallas (4.800 líneas de plantillas).</span><span data-en>Logic: orders, preventive, inventory, purchasing, permissions, reports and API (21,200 lines), plus the screens (4,800 lines of templates).</span></td></tr>
+  <tr><td>JavaScript</td><td><span data-es>Trabajo sin conexión, escaneo, tablero y app instalable (750 líneas).</span><span data-en>Offline work, scanning, board and installable app (750 lines).</span></td></tr>
+  <tr><td>SQL</td><td><span data-es>Almacenamiento multiempresa.</span><span data-en>Multi-company storage.</span></td></tr>
+</table>
+
+<h2 data-es>Véalo funcionando con sus propios equipos</h2><h2 data-en>See it working with your own equipment</h2>
+<div class="cta">
+  <h3 data-es>Demostración guiada de 30 minutos</h3><h3 data-en>A 30-minute guided demo</h3>
+  <p data-es>Sus equipos, sus fallas típicas y su forma de trabajar.</p><p data-en>Your equipment, your typical failures and the way you work.</p>
+  <div class="contacto" style="border:0;padding:0;background:none">
+    <div><strong>Rafael Blanco</strong><br><span data-es>para Kusarive Solutions LLC</span><span data-en>for Kusarive Solutions LLC</span></div>
+    <a href="https://k-mant.com">k-mant.com</a>
+    <a href="mailto:soporte@k-mant.com">soporte@k-mant.com</a>
+    <a class="boton" href="https://wa.me/14073370061">WhatsApp +1 407 337 0061</a>
+    <a href="presentacion/K-Mant-presentacion.pdf" download><span data-es>Presentación en PDF</span><span data-en>Presentation (PDF)</span></a>
+  </div>
+</div>
+
+<footer>© 2026 Kusarive Solutions LLC.</footer>
+</div>
+
+<script>
+(function(){
+  var html=document.documentElement;
+  function poner(l){
+    html.lang=l;
+    document.querySelectorAll('.idioma button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
+    try{localStorage.setItem('idioma',l)}catch(e){}
+  }
+  document.querySelectorAll('.idioma button').forEach(function(b){b.addEventListener('click',function(){poner(b.dataset.l)})});
+  var g=null;try{g=localStorage.getItem('idioma')}catch(e){}
+  poner(g||((navigator.language||'es').slice(0,2)==='en'?'en':'es'));
+})();
+</script>
+</body>
+</html>
