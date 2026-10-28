@@ -158,4 +158,10 @@ Rafael Blanco, for Kusarive Solutions LLC
 - WhatsApp: [+1 407 337 0061](https://wa.me/14073370061)
 - Presentation: [36-slide PDF](presentacion/K-Mant-presentacion.pdf)
 
+## What's new
+
+- **27-Oct-2026** · Showcase published, with a downloadable PDF presentation.
+
+Full log: [CHANGELOG.md](CHANGELOG.md).
+
 © 2026 Kusarive Solutions LLC. See [LICENSE](LICENSE).
